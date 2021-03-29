@@ -23,6 +23,7 @@ from collections import namedtuple
 
 # if installed via pip this variable is set to true
 HOME_CONFIG = False
+UPDATER_AVAILABLE = True
 
 # Base dir is parent of current file, necessary if called from different folder
 if sys.version_info < (3, 0):
@@ -103,7 +104,7 @@ LDAP_AUTH_SIMPLE         = 0
 
 DEFAULT_MAIL_SERVER = "mail.example.org"
 
-DEFAULT_PASSWORD    = "admin123"
+DEFAULT_PASSWORD    = "admin123"  # nosec
 DEFAULT_PORT        = 8083
 env_CALIBRE_PORT = os.environ.get("CALIBRE_PORT", DEFAULT_PORT)
 try:
@@ -129,7 +130,7 @@ def selected_roles(dictionary):
 
 # :rtype: BookMeta
 BookMeta = namedtuple('BookMeta', 'file_path, extension, title, author, cover, description, tags, series, '
-                                  'series_id, languages')
+                                  'series_id, languages, publisher')
 
 STABLE_VERSION = {'version': '0.6.12 Beta'}
 

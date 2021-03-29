@@ -12,7 +12,7 @@ Calibre-Web is a web app providing a clean interface for browsing, reading and d
 - full graphical setup
 - User management with fine-grained per-user permissions
 - Admin interface
-- User Interface in czech, dutch, english, finnish, french, german, greek, hungarian, italian, japanese, khmer, polish, russian, simplified chinese, spanish, swedish, turkish, ukrainian
+- User Interface in brazilian, czech, dutch, english, finnish, french, german, greek, hungarian, italian, japanese, khmer, polish, russian, simplified chinese, spanish, swedish, turkish, ukrainian
 - OPDS feed for eBook reader apps 
 - Filter and search by titles, authors, tags, series and language
 - Create a custom book collection (shelves)
@@ -22,7 +22,7 @@ Calibre-Web is a web app providing a clean interface for browsing, reading and d
 - Support for public user registration
 - Send eBooks to Kindle devices with the click of a button
 - Sync your Kobo devices through Calibre-Web with your Calibre library
-- Support for reading eBooks directly in the browser (.txt, .epub, .pdf, .cbr, .cbt, .cbz)
+- Support for reading eBooks directly in the browser (.txt, .epub, .pdf, .cbr, .cbt, .cbz, .djvu)
 - Upload new books in many formats, including audio formats (.mp3, .m4a, .m4b)
 - Support for Calibre Custom Columns
 - Ability to hide content based on categories and Custom Column content per user

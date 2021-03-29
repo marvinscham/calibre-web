@@ -264,10 +264,11 @@ class Updater(threading.Thread):
                     # log_from_thread("Delete file " + item_path)
                     os.remove(item_path)
                 except OSError:
-                    logger.debug("Could not remove: %s", item_path)
+                    log.debug("Could not remove: %s", item_path)
         shutil.rmtree(source, ignore_errors=True)
 
-    def is_venv(self):
+    @staticmethod
+    def is_venv():
         if (hasattr(sys, 'real_prefix')) or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
             return os.sep + os.path.relpath(sys.prefix, constants.BASE_DIR)
         else:
@@ -282,6 +283,65 @@ class Updater(threading.Thread):
     @classmethod
     def _stable_version_info(cls):
         return constants.STABLE_VERSION  # Current version
+
+    @staticmethod
+    def _populate_parent_commits(update_data, status, locale, tz, parents):
+        try:
+            parent_commit = update_data['parents'][0]
+            # limit the maximum search depth
+            remaining_parents_cnt = 10
+        except (IndexError, KeyError):
+            remaining_parents_cnt = None
+
+        if remaining_parents_cnt is not None:
+            while True:
+                if remaining_parents_cnt == 0:
+                    break
+
+                # check if we are more than one update behind if so, go up the tree
+                if parent_commit['sha'] != status['current_commit_hash']:
+                    try:
+                        headers = {'Accept': 'application/vnd.github.v3+json'}
+                        r = requests.get(parent_commit['url'], headers=headers, timeout=10)
+                        r.raise_for_status()
+                        parent_data = r.json()
+
+                        parent_commit_date = datetime.datetime.strptime(
+                            parent_data['committer']['date'], '%Y-%m-%dT%H:%M:%SZ') - tz
+                        parent_commit_date = format_datetime(
+                            parent_commit_date, format='short', locale=locale)
+
+                        parents.append([parent_commit_date,
+                                        parent_data['message'].replace('\r\n', '<p>').replace('\n', '<p>')])
+                        parent_commit = parent_data['parents'][0]
+                        remaining_parents_cnt -= 1
+                    except Exception:
+                        # it isn't crucial if we can't get information about the parent
+                        break
+                else:
+                    # parent is our current version
+                    break
+        return parents
+
+    @staticmethod
+    def _load_nightly_data(repository_url, commit, status):
+        update_data = dict()
+        try:
+            headers = {'Accept': 'application/vnd.github.v3+json'}
+            r = requests.get(repository_url + '/git/commits/' + commit['object']['sha'],
+                             headers=headers,
+                             timeout=10)
+            r.raise_for_status()
+            update_data = r.json()
+        except requests.exceptions.HTTPError as e:
+            status['message'] = _(u'HTTP Error') + ' ' + str(e)
+        except requests.exceptions.ConnectionError:
+            status['message'] = _(u'Connection error')
+        except requests.exceptions.Timeout:
+            status['message'] = _(u'Timeout while establishing connection')
+        except (requests.exceptions.RequestException, ValueError):
+            status['message'] = _(u'General error')
+        return status, update_data
 
     def _nightly_available_updates(self, request_method, locale):
         tz = datetime.timedelta(seconds=time.timezone if (time.localtime().tm_isdst == 0) else time.altzone)
@@ -308,22 +368,7 @@ class Updater(threading.Thread):
 
             # a new update is available
             status['update'] = True
-
-            try:
-                headers = {'Accept': 'application/vnd.github.v3+json'}
-                r = requests.get(repository_url + '/git/commits/' + commit['object']['sha'],
-                                 headers=headers,
-                                 timeout=10)
-                r.raise_for_status()
-                update_data = r.json()
-            except requests.exceptions.HTTPError as e:
-                status['message'] = _(u'HTTP Error') + ' ' + str(e)
-            except requests.exceptions.ConnectionError:
-                status['message'] = _(u'Connection error')
-            except requests.exceptions.Timeout:
-                status['message'] = _(u'Timeout while establishing connection')
-            except (requests.exceptions.RequestException, ValueError):
-                status['message'] = _(u'General error')
+            status, update_data = self._load_nightly_data(repository_url, commit, status)
 
             if status['message'] != '':
                 return json.dumps(status)
@@ -345,41 +390,7 @@ class Updater(threading.Thread):
                 )
                 # it only makes sense to analyze the parents if we know the current commit hash
                 if status['current_commit_hash'] != '':
-                    try:
-                        parent_commit = update_data['parents'][0]
-                        # limit the maximum search depth
-                        remaining_parents_cnt = 10
-                    except (IndexError, KeyError):
-                        remaining_parents_cnt = None
-
-                    if remaining_parents_cnt is not None:
-                        while True:
-                            if remaining_parents_cnt == 0:
-                                break
-
-                            # check if we are more than one update behind if so, go up the tree
-                            if parent_commit['sha'] != status['current_commit_hash']:
-                                try:
-                                    headers = {'Accept': 'application/vnd.github.v3+json'}
-                                    r = requests.get(parent_commit['url'], headers=headers, timeout=10)
-                                    r.raise_for_status()
-                                    parent_data = r.json()
-
-                                    parent_commit_date = datetime.datetime.strptime(
-                                        parent_data['committer']['date'], '%Y-%m-%dT%H:%M:%SZ') - tz
-                                    parent_commit_date = format_datetime(
-                                        parent_commit_date, format='short', locale=locale)
-
-                                    parents.append([parent_commit_date,
-                                                    parent_data['message'].replace('\r\n', '<p>').replace('\n', '<p>')])
-                                    parent_commit = parent_data['parents'][0]
-                                    remaining_parents_cnt -= 1
-                                except Exception:
-                                    # it isn't crucial if we can't get information about the parent
-                                    break
-                            else:
-                                # parent is our current version
-                                break
+                    parents = self._populate_parent_commits(update_data, status, locale, tz, parents)
                 status['history'] = parents[::-1]
             except (IndexError, KeyError):
                 status['success'] = False

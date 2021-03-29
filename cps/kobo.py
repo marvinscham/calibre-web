@@ -42,8 +42,7 @@ from flask import (
 from flask_login import current_user
 from werkzeug.datastructures import Headers
 from sqlalchemy import func
-from sqlalchemy.sql.expression import and_, or_
-from sqlalchemy.orm import load_only
+from sqlalchemy.sql.expression import and_
 from sqlalchemy.exc import StatementError
 import requests
 
@@ -306,7 +305,8 @@ def get_download_url_for_book(book, book_format):
             book_format=book_format.lower()
         )
     return url_for(
-        "web.download_link",
+        "kobo.download_book",
+        auth_token=kobo_auth.get_auth_token(),
         book_id=book.id,
         book_format=book_format.lower(),
         _external=True,
@@ -893,17 +893,6 @@ def HandleProductsRequest(dummy=None):
     return redirect_or_proxy_request()
 
 
-'''@kobo.errorhandler(404)
-def handle_404(err):
-    # This handler acts as a catch-all for endpoints that we don't have an interest in
-    # implementing (e.g: v1/analytics/gettests, v1/user/recommendations, etc)
-    if err:
-        print('404')
-        return jsonify(error=str(err)), 404
-    log.debug("Unknown Request received: %s, method: %s, data: %s", request.base_url, request.method, request.data)
-    return redirect_or_proxy_request()'''
-
-
 def make_calibre_web_auth_response():
     # As described in kobo_auth.py, CalibreWeb doesn't make use practical use of this auth/device API call for
     # authentation (nor for authorization). We return a dummy response just to keep the device happy.
@@ -930,7 +919,7 @@ def HandleAuthRequest():
     if config.config_kobo_proxy:
         try:
             return redirect_or_proxy_request()
-        except:
+        except Exception:
             log.error("Failed to receive or parse response from Kobo's auth endpoint. Falling back to un-proxied mode.")
     return make_calibre_web_auth_response()
 
@@ -947,7 +936,7 @@ def HandleInitRequest():
             store_response_json = store_response.json()
             if "Resources" in store_response_json:
                 kobo_resources = store_response_json["Resources"]
-        except:
+        except Exception:
             log.error("Failed to receive or parse response from Kobo's init endpoint. Falling back to un-proxied mode.")
     if not kobo_resources:
         kobo_resources = NATIVE_KOBO_RESOURCES()

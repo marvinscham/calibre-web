@@ -22,6 +22,7 @@ from base64 import b64decode, b64encode
 from jsonschema import validate, exceptions, __version__
 from datetime import datetime
 try:
+    # pylint: disable=unused-import
     from urllib import unquote
 except ImportError:
     from urllib.parse import unquote
@@ -64,7 +65,7 @@ class SyncToken:
         books_last_modified: Datetime representing the last modified book that the device knows about.
     """
 
-    SYNC_TOKEN_HEADER = "x-kobo-synctoken"
+    SYNC_TOKEN_HEADER = "x-kobo-synctoken"  # nosec
     VERSION = "1-1-0"
     LAST_MODIFIED_ADDED_VERSION = "1-1-0"
     MIN_VERSION = "1-0-0"
@@ -98,7 +99,7 @@ class SyncToken:
         reading_state_last_modified=datetime.min,
         tags_last_modified=datetime.min,
         books_last_id=-1
-    ):
+    ):  # nosec
         self.raw_kobo_store_token = raw_kobo_store_token
         self.books_last_created = books_last_created
         self.books_last_modified = books_last_modified
@@ -110,7 +111,7 @@ class SyncToken:
     @staticmethod
     def from_headers(headers):
         sync_token_header = headers.get(SyncToken.SYNC_TOKEN_HEADER, "")
-        if sync_token_header == "":
+        if sync_token_header == "":  # nosec
             return SyncToken()
 
         # On the first sync from a Kobo device, we may receive the SyncToken

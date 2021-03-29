@@ -37,20 +37,20 @@
       <div class="row">
         <div class="col-xs-6 col-md-6 col-sm-offset-3" style="margin-top:50px;">
             
-            <p class='text-justify attribute'><strong>Start Time: </strong>2021-02-01 19:02:39</p>
+            <p class='text-justify attribute'><strong>Start Time: </strong>2021-03-20 19:40:16</p>
             
         </div>
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-6 col-sm-offset-3">
             
-            <p class='text-justify attribute'><strong>Stop Time: </strong>2021-02-01 21:32:03</p>
+            <p class='text-justify attribute'><strong>Stop Time: </strong>2021-03-20 22:11:28</p>
             
         </div>
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-6 col-sm-offset-3">
-           <p class='text-justify attribute'><strong>Duration: </strong>2h 0 min</p>
+           <p class='text-justify attribute'><strong>Duration: </strong>2h 2 min</p>
         </div>
       </div>
       </div>
@@ -500,11 +500,11 @@
     
 
 
-    <tr id="su" class="passClass">
+    <tr id="su" class="failClass">
         <td>TestEbookConvertCalibreGDrive</td>
         <td class="text-center">6</td>
-        <td class="text-center">6</td>
-        <td class="text-center">0</td>
+        <td class="text-center">5</td>
+        <td class="text-center">1</td>
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
@@ -532,11 +532,33 @@
     
     
     
-        <tr id='pt6.3' class='hiddenRow bg-success'>
+        <tr id="ft6.3" class="none bg-danger">
             <td>
                 <div class='testcase'>TestEbookConvertCalibreGDrive - test_convert_only</div>
             </td>
-            <td colspan='6' align='center'>PASS</td>
+            <td colspan='6'>
+                <div class="text-center">
+                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_ft6.3')">FAIL</a>
+                </div>
+                <!--css div popup start-->
+                <div id="div_ft6.3" class="popup_window test_output" style="display:none;">
+                    <div class='close_button pull-right'>
+                        <button type="button" class="close" aria-label="Close" onfocus='this.blur();'
+                                onclick='document.getElementById('div_ft6.3').style.display='none'"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="text-left pull-left">
+                        <pre class="text-left">Traceback (most recent call last):
+  File "/home/ozzie/Development/calibre-web-test/test/test_ebook_convert_gdrive.py", line 323, in test_convert_only
+    self.assertEqual(ret[-4]['result'], 'Finished')
+AssertionError: 'Failed' != 'Finished'
+- Failed
++ Finished</pre>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!--css div popup end-->
+            </td>
         </tr>
     
     
@@ -1190,11 +1212,11 @@
     
 
 
-    <tr id="su" class="failClass">
+    <tr id="su" class="passClass">
         <td>TestEditBooksOnGdrive</td>
         <td class="text-center">20</td>
-        <td class="text-center">19</td>
-        <td class="text-center">1</td>
+        <td class="text-center">20</td>
+        <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
@@ -1375,31 +1397,11 @@
     
     
     
-        <tr id="ft12.20" class="none bg-danger">
+        <tr id='pt12.20' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestEditBooksOnGdrive - test_watch_metadata</div>
             </td>
-            <td colspan='6'>
-                <div class="text-center">
-                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_ft12.20')">FAIL</a>
-                </div>
-                <!--css div popup start-->
-                <div id="div_ft12.20" class="popup_window test_output" style="display:none;">
-                    <div class='close_button pull-right'>
-                        <button type="button" class="close" aria-label="Close" onfocus='this.blur();'
-                                onclick='document.getElementById('div_ft12.20').style.display='none'"><span
-                                aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="text-left pull-left">
-                        <pre class="text-left">Traceback (most recent call last):
-  File "/home/ozzie/Development/calibre-web-test/test/test_edit_ebooks_gdrive.py", line 847, in test_watch_metadata
-    self.assertNotIn('series', book)
-AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'testbook', 'author': ['John Döe'], 'rating': 0, 'languages': ['English'], 'identifier': [], 'cover': '/cover/5?edit=175d2a21-2733-49b6-9fcf-3ef9aee1670b', 'tag': [], 'publisher': ['Randomhäus'], 'comment': '\n', 'add_shelf': [], 'del_shelf': [], 'edit_enable': True, 'kindle': None, 'kindlebtn': None, 'download': ['EPUB (6.7 kB)'], 'read': False, 'archived': False, 'series_all': 'Book 1.0 of test', 'series_index': '1.0', 'series': 'test', 'cust_columns': []}</pre>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <!--css div popup end-->
-            </td>
+            <td colspan='6' align='center'>PASS</td>
         </tr>
     
     
@@ -1615,12 +1617,12 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
 
 
-    <tr id="su" class="passClass">
+    <tr id="su" class="errorClass">
         <td>TestKoboSync</td>
         <td class="text-center">9</td>
-        <td class="text-center">9</td>
+        <td class="text-center">8</td>
         <td class="text-center">0</td>
-        <td class="text-center">0</td>
+        <td class="text-center">1</td>
         <td class="text-center">0</td>
         <td class="text-center">
             <a onclick="showClassDetail('c18', 9)">Detail</a>
@@ -1629,11 +1631,33 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
 
     
     
-        <tr id='pt18.1' class='hiddenRow bg-success'>
+        <tr id="et18.1" class="none bg-info">
             <td>
                 <div class='testcase'>TestKoboSync - test_book_download</div>
             </td>
-            <td colspan='6' align='center'>PASS</td>
+            <td colspan='6'>
+                <div class="text-center">
+                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_et18.1')">ERROR</a>
+                </div>
+                <!--css div popup start-->
+                <div id="div_et18.1" class="popup_window test_output" style="display:none;">
+                    <div class='close_button pull-right'>
+                        <button type="button" class="close" aria-label="Close" onfocus='this.blur();'
+                                onclick='document.getElementById('div_et18.1').style.display='none'"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="text-left pull-left">
+                        <pre class="text-left">Traceback (most recent call last):
+  File "/home/ozzie/Development/calibre-web-test/test/test_kobo_sync.py", line 585, in test_book_download
+    data = self.inital_sync()
+  File "/home/ozzie/Development/calibre-web-test/test/test_kobo_sync.py", line 133, in inital_sync
+    self.assertEqual(data[3]['NewEntitlement']['BookMetadata']['DownloadUrls'][1]['Format'], 'EPUB')
+IndexError: list index out of range</pre>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!--css div popup end-->
+            </td>
         </tr>
     
     
@@ -2317,6 +2341,30 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
 
 
     <tr id="su" class="passClass">
+        <td>TestUploadPDF</td>
+        <td class="text-center">1</td>
+        <td class="text-center">1</td>
+        <td class="text-center">0</td>
+        <td class="text-center">0</td>
+        <td class="text-center">0</td>
+        <td class="text-center">
+            <a onclick="showClassDetail('c24', 1)">Detail</a>
+        </td>
+    </tr>
+
+    
+    
+        <tr id='pt24.1' class='hiddenRow bg-success'>
+            <td>
+                <div class='testcase'>TestUploadPDF - test_upload_invalid_pdf</div>
+            </td>
+            <td colspan='6' align='center'>PASS</td>
+        </tr>
+    
+    
+
+
+    <tr id="su" class="passClass">
         <td>TestReader</td>
         <td class="text-center">5</td>
         <td class="text-center">5</td>
@@ -2324,13 +2372,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c24', 5)">Detail</a>
+            <a onclick="showClassDetail('c25', 5)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt24.1' class='hiddenRow bg-success'>
+        <tr id='pt25.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestReader - test_comic_reader</div>
             </td>
@@ -2339,7 +2387,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt24.2' class='hiddenRow bg-success'>
+        <tr id='pt25.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestReader - test_epub_reader</div>
             </td>
@@ -2348,7 +2396,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt24.3' class='hiddenRow bg-success'>
+        <tr id='pt25.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestReader - test_pdf_reader</div>
             </td>
@@ -2357,7 +2405,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt24.4' class='hiddenRow bg-success'>
+        <tr id='pt25.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestReader - test_sound_listener</div>
             </td>
@@ -2366,7 +2414,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt24.5' class='hiddenRow bg-success'>
+        <tr id='pt25.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestReader - test_txt_reader</div>
             </td>
@@ -2384,13 +2432,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c25', 8)">Detail</a>
+            <a onclick="showClassDetail('c26', 8)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt25.1' class='hiddenRow bg-success'>
+        <tr id='pt26.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_forgot_password</div>
             </td>
@@ -2399,7 +2447,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.2' class='hiddenRow bg-success'>
+        <tr id='pt26.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_illegal_email</div>
             </td>
@@ -2408,7 +2456,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.3' class='hiddenRow bg-success'>
+        <tr id='pt26.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_limit_domain</div>
             </td>
@@ -2417,7 +2465,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.4' class='hiddenRow bg-success'>
+        <tr id='pt26.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_register_no_server</div>
             </td>
@@ -2426,7 +2474,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.5' class='hiddenRow bg-success'>
+        <tr id='pt26.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_registering_only_email</div>
             </td>
@@ -2435,7 +2483,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.6' class='hiddenRow bg-success'>
+        <tr id='pt26.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_registering_user</div>
             </td>
@@ -2444,7 +2492,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.7' class='hiddenRow bg-success'>
+        <tr id='pt26.7' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_registering_user_fail</div>
             </td>
@@ -2453,7 +2501,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt25.8' class='hiddenRow bg-success'>
+        <tr id='pt26.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestRegister - test_user_change_password</div>
             </td>
@@ -2465,19 +2513,19 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
 
     <tr id="su" class="skipClass">
         <td>TestShelf</td>
+        <td class="text-center">12</td>
         <td class="text-center">11</td>
-        <td class="text-center">10</td>
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">1</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c26', 11)">Detail</a>
+            <a onclick="showClassDetail('c27', 12)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt26.1' class='hiddenRow bg-success'>
+        <tr id='pt27.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_add_shelf_from_search</div>
             </td>
@@ -2486,7 +2534,16 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.2' class='hiddenRow bg-success'>
+        <tr id='pt27.2' class='hiddenRow bg-success'>
+            <td>
+                <div class='testcase'>TestShelf - test_adv_search_shelf</div>
+            </td>
+            <td colspan='6' align='center'>PASS</td>
+        </tr>
+    
+    
+    
+        <tr id='pt27.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_arrange_shelf</div>
             </td>
@@ -2495,7 +2552,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.3' class='hiddenRow bg-success'>
+        <tr id='pt27.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_delete_book_of_shelf</div>
             </td>
@@ -2504,7 +2561,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.4' class='hiddenRow bg-success'>
+        <tr id='pt27.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_private_shelf</div>
             </td>
@@ -2513,7 +2570,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.5' class='hiddenRow bg-success'>
+        <tr id='pt27.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_public_private_shelf</div>
             </td>
@@ -2522,7 +2579,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.6' class='hiddenRow bg-success'>
+        <tr id='pt27.7' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_public_shelf</div>
             </td>
@@ -2531,7 +2588,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.7' class='hiddenRow bg-success'>
+        <tr id='pt27.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_rename_shelf</div>
             </td>
@@ -2540,7 +2597,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.8' class='hiddenRow bg-success'>
+        <tr id='pt27.9' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_shelf_action_non_shelf_edit_role</div>
             </td>
@@ -2549,7 +2606,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.9' class='hiddenRow bg-success'>
+        <tr id='pt27.10' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_shelf_anonymous</div>
             </td>
@@ -2558,19 +2615,19 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id="st26.10" class="none bg-warning">
+        <tr id="st27.11" class="none bg-warning">
             <td>
                 <div class='testcase'>TestShelf - test_shelf_database_change</div>
             </td>
             <td colspan='6'>
                 <div class="text-center">
-                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_st26.10')">SKIP</a>
+                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_st27.11')">SKIP</a>
                 </div>
                 <!--css div popup start-->
-                <div id="div_st26.10" class="popup_window test_output" style="display:none;">
+                <div id="div_st27.11" class="popup_window test_output" style="display:none;">
                     <div class='close_button pull-right'>
                         <button type="button" class="close" aria-label="Close" onfocus='this.blur();'
-                                onclick='document.getElementById('div_st26.10').style.display='none'"><span
+                                onclick='document.getElementById('div_st27.11').style.display='none'"><span
                                 aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="text-left pull-left">
@@ -2584,7 +2641,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt26.11' class='hiddenRow bg-success'>
+        <tr id='pt27.12' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestShelf - test_shelf_long_name</div>
             </td>
@@ -2602,13 +2659,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">1</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c27', 8)">Detail</a>
+            <a onclick="showClassDetail('c28', 8)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt27.1' class='hiddenRow bg-success'>
+        <tr id='pt28.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_check_update_nightly_errors</div>
             </td>
@@ -2617,7 +2674,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.2' class='hiddenRow bg-success'>
+        <tr id='pt28.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_check_update_nightly_request_errors</div>
             </td>
@@ -2626,7 +2683,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.3' class='hiddenRow bg-success'>
+        <tr id='pt28.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_check_update_stable_errors</div>
             </td>
@@ -2635,7 +2692,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.4' class='hiddenRow bg-success'>
+        <tr id='pt28.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_check_update_stable_versions</div>
             </td>
@@ -2644,7 +2701,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.5' class='hiddenRow bg-success'>
+        <tr id='pt28.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_perform_update</div>
             </td>
@@ -2653,7 +2710,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.6' class='hiddenRow bg-success'>
+        <tr id='pt28.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_perform_update_stable_errors</div>
             </td>
@@ -2662,19 +2719,19 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id="st27.7" class="none bg-warning">
+        <tr id="st28.7" class="none bg-warning">
             <td>
                 <div class='testcase'>TestUpdater - test_perform_update_timeout</div>
             </td>
             <td colspan='6'>
                 <div class="text-center">
-                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_st27.7')">SKIP</a>
+                    <a class="popup_link text-center" onfocus='blur()' onclick="showTestDetail('div_st28.7')">SKIP</a>
                 </div>
                 <!--css div popup start-->
-                <div id="div_st27.7" class="popup_window test_output" style="display:none;">
+                <div id="div_st28.7" class="popup_window test_output" style="display:none;">
                     <div class='close_button pull-right'>
                         <button type="button" class="close" aria-label="Close" onfocus='this.blur();'
-                                onclick='document.getElementById('div_st27.7').style.display='none'"><span
+                                onclick='document.getElementById('div_st28.7').style.display='none'"><span
                                 aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="text-left pull-left">
@@ -2688,7 +2745,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt27.8' class='hiddenRow bg-success'>
+        <tr id='pt28.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUpdater - test_reconnect_database</div>
             </td>
@@ -2706,13 +2763,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c28', 1)">Detail</a>
+            <a onclick="showClassDetail('c29', 1)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt28.1' class='hiddenRow bg-success'>
+        <tr id='pt29.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserLoad - test_user_change_vis</div>
             </td>
@@ -2730,13 +2787,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c29', 21)">Detail</a>
+            <a onclick="showClassDetail('c30', 21)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt29.1' class='hiddenRow bg-success'>
+        <tr id='pt30.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_allow_column_restriction</div>
             </td>
@@ -2745,7 +2802,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.2' class='hiddenRow bg-success'>
+        <tr id='pt30.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_allow_tag_restriction</div>
             </td>
@@ -2754,7 +2811,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.3' class='hiddenRow bg-success'>
+        <tr id='pt30.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_archived_format_template</div>
             </td>
@@ -2763,7 +2820,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.4' class='hiddenRow bg-success'>
+        <tr id='pt30.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_author_user_template</div>
             </td>
@@ -2772,7 +2829,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.5' class='hiddenRow bg-success'>
+        <tr id='pt30.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_best_user_template</div>
             </td>
@@ -2781,7 +2838,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.6' class='hiddenRow bg-success'>
+        <tr id='pt30.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_category_user_template</div>
             </td>
@@ -2790,7 +2847,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.7' class='hiddenRow bg-success'>
+        <tr id='pt30.7' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_deny_column_restriction</div>
             </td>
@@ -2799,7 +2856,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.8' class='hiddenRow bg-success'>
+        <tr id='pt30.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_deny_tag_restriction</div>
             </td>
@@ -2808,7 +2865,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.9' class='hiddenRow bg-success'>
+        <tr id='pt30.9' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_detail_random_user_template</div>
             </td>
@@ -2817,7 +2874,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.10' class='hiddenRow bg-success'>
+        <tr id='pt30.10' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_download_user_template</div>
             </td>
@@ -2826,7 +2883,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.11' class='hiddenRow bg-success'>
+        <tr id='pt30.11' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_format_user_template</div>
             </td>
@@ -2835,7 +2892,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.12' class='hiddenRow bg-success'>
+        <tr id='pt30.12' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_hot_user_template</div>
             </td>
@@ -2844,7 +2901,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.13' class='hiddenRow bg-success'>
+        <tr id='pt30.13' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_language_user_template</div>
             </td>
@@ -2853,7 +2910,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.14' class='hiddenRow bg-success'>
+        <tr id='pt30.14' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_limit_book_languages</div>
             </td>
@@ -2862,7 +2919,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.15' class='hiddenRow bg-success'>
+        <tr id='pt30.15' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_list_user_template</div>
             </td>
@@ -2871,7 +2928,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.16' class='hiddenRow bg-success'>
+        <tr id='pt30.16' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_publisher_user_template</div>
             </td>
@@ -2880,7 +2937,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.17' class='hiddenRow bg-success'>
+        <tr id='pt30.17' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_random_user_template</div>
             </td>
@@ -2889,7 +2946,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.18' class='hiddenRow bg-success'>
+        <tr id='pt30.18' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_read_user_template</div>
             </td>
@@ -2898,7 +2955,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.19' class='hiddenRow bg-success'>
+        <tr id='pt30.19' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_recent_user_template</div>
             </td>
@@ -2907,7 +2964,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.20' class='hiddenRow bg-success'>
+        <tr id='pt30.20' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_series_user_template</div>
             </td>
@@ -2916,7 +2973,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt29.21' class='hiddenRow bg-success'>
+        <tr id='pt30.21' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestUserTemplate - test_ui_language_settings</div>
             </td>
@@ -2934,13 +2991,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c30', 33)">Detail</a>
+            <a onclick="showClassDetail('c31', 33)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt30.1' class='hiddenRow bg-success'>
+        <tr id='pt31.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_about</div>
             </td>
@@ -2949,7 +3006,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.2' class='hiddenRow bg-success'>
+        <tr id='pt31.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_SMTP_Settings</div>
             </td>
@@ -2958,7 +3015,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.3' class='hiddenRow bg-success'>
+        <tr id='pt31.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_add_user</div>
             </td>
@@ -2967,7 +3024,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.4' class='hiddenRow bg-success'>
+        <tr id='pt31.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_password</div>
             </td>
@@ -2976,7 +3033,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.5' class='hiddenRow bg-success'>
+        <tr id='pt31.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_archived</div>
             </td>
@@ -2985,7 +3042,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.6' class='hiddenRow bg-success'>
+        <tr id='pt31.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_authors</div>
             </td>
@@ -2994,7 +3051,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.7' class='hiddenRow bg-success'>
+        <tr id='pt31.7' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_category</div>
             </td>
@@ -3003,7 +3060,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.8' class='hiddenRow bg-success'>
+        <tr id='pt31.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_file_formats</div>
             </td>
@@ -3012,7 +3069,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.9' class='hiddenRow bg-success'>
+        <tr id='pt31.9' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_hot</div>
             </td>
@@ -3021,7 +3078,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.10' class='hiddenRow bg-success'>
+        <tr id='pt31.10' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_language</div>
             </td>
@@ -3030,7 +3087,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.11' class='hiddenRow bg-success'>
+        <tr id='pt31.11' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_publisher</div>
             </td>
@@ -3039,7 +3096,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.12' class='hiddenRow bg-success'>
+        <tr id='pt31.12' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_random</div>
             </td>
@@ -3048,7 +3105,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.13' class='hiddenRow bg-success'>
+        <tr id='pt31.13' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_rated</div>
             </td>
@@ -3057,7 +3114,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.14' class='hiddenRow bg-success'>
+        <tr id='pt31.14' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_rating</div>
             </td>
@@ -3066,7 +3123,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.15' class='hiddenRow bg-success'>
+        <tr id='pt31.15' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_read</div>
             </td>
@@ -3075,7 +3132,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.16' class='hiddenRow bg-success'>
+        <tr id='pt31.16' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_admin_change_visibility_series</div>
             </td>
@@ -3084,7 +3141,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.17' class='hiddenRow bg-success'>
+        <tr id='pt31.17' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_allow_columns</div>
             </td>
@@ -3093,7 +3150,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.18' class='hiddenRow bg-success'>
+        <tr id='pt31.18' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_allow_tags</div>
             </td>
@@ -3102,7 +3159,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.19' class='hiddenRow bg-success'>
+        <tr id='pt31.19' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_archive_books</div>
             </td>
@@ -3111,7 +3168,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.20' class='hiddenRow bg-success'>
+        <tr id='pt31.20' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_authors_max_settings</div>
             </td>
@@ -3120,7 +3177,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.21' class='hiddenRow bg-success'>
+        <tr id='pt31.21' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_change_title</div>
             </td>
@@ -3129,7 +3186,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.22' class='hiddenRow bg-success'>
+        <tr id='pt31.22' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_checked_logged_in</div>
             </td>
@@ -3138,7 +3195,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.23' class='hiddenRow bg-success'>
+        <tr id='pt31.23' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_hide_custom_column</div>
             </td>
@@ -3147,7 +3204,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.24' class='hiddenRow bg-success'>
+        <tr id='pt31.24' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_link_column_to_read_status</div>
             </td>
@@ -3156,7 +3213,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.25' class='hiddenRow bg-success'>
+        <tr id='pt31.25' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_random_books_available</div>
             </td>
@@ -3165,7 +3222,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.26' class='hiddenRow bg-success'>
+        <tr id='pt31.26' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_restrict_columns</div>
             </td>
@@ -3174,7 +3231,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.27' class='hiddenRow bg-success'>
+        <tr id='pt31.27' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_restrict_tags</div>
             </td>
@@ -3183,7 +3240,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.28' class='hiddenRow bg-success'>
+        <tr id='pt31.28' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_save_views_recent</div>
             </td>
@@ -3192,7 +3249,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.29' class='hiddenRow bg-success'>
+        <tr id='pt31.29' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_search_functions</div>
             </td>
@@ -3201,7 +3258,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.30' class='hiddenRow bg-success'>
+        <tr id='pt31.30' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_search_order</div>
             </td>
@@ -3210,7 +3267,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.31' class='hiddenRow bg-success'>
+        <tr id='pt31.31' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_search_string</div>
             </td>
@@ -3219,7 +3276,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.32' class='hiddenRow bg-success'>
+        <tr id='pt31.32' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_user_email_available</div>
             </td>
@@ -3228,7 +3285,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt30.33' class='hiddenRow bg-success'>
+        <tr id='pt31.33' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreWebVisibilitys - test_user_visibility_sidebar</div>
             </td>
@@ -3246,13 +3303,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
         <td class="text-center">0</td>
         <td class="text-center">0</td>
         <td class="text-center">
-            <a onclick="showClassDetail('c31', 16)">Detail</a>
+            <a onclick="showClassDetail('c32', 16)">Detail</a>
         </td>
     </tr>
 
     
     
-        <tr id='pt31.1' class='hiddenRow bg-success'>
+        <tr id='pt32.1' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_author_sort</div>
             </td>
@@ -3261,7 +3318,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.2' class='hiddenRow bg-success'>
+        <tr id='pt32.2' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_author_sort_comma</div>
             </td>
@@ -3270,7 +3327,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.3' class='hiddenRow bg-success'>
+        <tr id='pt32.3' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_author_sort_junior</div>
             </td>
@@ -3279,7 +3336,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.4' class='hiddenRow bg-success'>
+        <tr id='pt32.4' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_author_sort_oneword</div>
             </td>
@@ -3288,7 +3345,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.5' class='hiddenRow bg-success'>
+        <tr id='pt32.5' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_author_sort_roman</div>
             </td>
@@ -3297,7 +3354,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.6' class='hiddenRow bg-success'>
+        <tr id='pt32.6' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_Limit_Length</div>
             </td>
@@ -3306,7 +3363,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.7' class='hiddenRow bg-success'>
+        <tr id='pt32.7' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_char_replacement</div>
             </td>
@@ -3315,7 +3372,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.8' class='hiddenRow bg-success'>
+        <tr id='pt32.8' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_chinese_Characters</div>
             </td>
@@ -3324,7 +3381,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.9' class='hiddenRow bg-success'>
+        <tr id='pt32.9' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_deg_eur_replacement</div>
             </td>
@@ -3333,7 +3390,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.10' class='hiddenRow bg-success'>
+        <tr id='pt32.10' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_doubleS</div>
             </td>
@@ -3342,7 +3399,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.11' class='hiddenRow bg-success'>
+        <tr id='pt32.11' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_finish_Dot</div>
             </td>
@@ -3351,7 +3408,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.12' class='hiddenRow bg-success'>
+        <tr id='pt32.12' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_high23</div>
             </td>
@@ -3360,7 +3417,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.13' class='hiddenRow bg-success'>
+        <tr id='pt32.13' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_check_umlauts</div>
             </td>
@@ -3369,7 +3426,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.14' class='hiddenRow bg-success'>
+        <tr id='pt32.14' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_random_password</div>
             </td>
@@ -3378,7 +3435,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.15' class='hiddenRow bg-success'>
+        <tr id='pt32.15' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_split_authors</div>
             </td>
@@ -3387,7 +3444,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
     
     
     
-        <tr id='pt31.16' class='hiddenRow bg-success'>
+        <tr id='pt32.16' class='hiddenRow bg-success'>
             <td>
                 <div class='testcase'>TestCalibreHelper - test_whitespaces</div>
             </td>
@@ -3398,10 +3455,10 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
 
     <tr id='total_row' class="text-center bg-grey">
         <td>Total</td>
-        <td>299</td>
-        <td>291</td>
+        <td>301</td>
+        <td>292</td>
         <td>1</td>
-        <td>0</td>
+        <td>1</td>
         <td>7</td>
         <td>&nbsp;</td>
     </tr>
@@ -3430,7 +3487,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>Platform</th>
-              <td>Linux 5.8.0-41-generic #46~20.04.1-Ubuntu SMP Mon Jan 18 17:52:23 UTC 2021 x86_64 x86_64</td>
+              <td>Linux 5.8.0-45-generic #51~20.04.1-Ubuntu SMP Tue Feb 23 13:46:31 UTC 2021 x86_64 x86_64</td>
               <td>Basic</td>
             </tr>
           
@@ -3489,8 +3546,8 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
             </tr>
           
             <tr>
-              <th>PyPDF2</th>
-              <td>1.26.0</td>
+              <th>PyPDF3</th>
+              <td>1.0.3</td>
               <td>Basic</td>
             </tr>
           
@@ -3508,7 +3565,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>singledispatch</th>
-              <td>3.4.0.3</td>
+              <td>3.4.0.4</td>
               <td>Basic</td>
             </tr>
           
@@ -3520,7 +3577,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>SQLAlchemy</th>
-              <td>1.3.22</td>
+              <td>1.3.23</td>
               <td>Basic</td>
             </tr>
           
@@ -3538,7 +3595,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>Wand</th>
-              <td>0.6.5</td>
+              <td>0.6.6</td>
               <td>Basic</td>
             </tr>
           
@@ -3550,13 +3607,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>google-api-python-client</th>
-              <td>1.12.8</td>
+              <td>2.0.2</td>
               <td>TestEbookConvertCalibreGDrive</td>
             </tr>
           
             <tr>
               <th>httplib2</th>
-              <td>0.18.1</td>
+              <td>0.19.0</td>
               <td>TestEbookConvertCalibreGDrive</td>
             </tr>
           
@@ -3574,7 +3631,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>PyDrive2</th>
-              <td>1.7.0</td>
+              <td>1.8.1</td>
               <td>TestEbookConvertCalibreGDrive</td>
             </tr>
           
@@ -3586,13 +3643,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>google-api-python-client</th>
-              <td>1.12.8</td>
+              <td>2.0.2</td>
               <td>TestEbookConvertGDriveKepubify</td>
             </tr>
           
             <tr>
               <th>httplib2</th>
-              <td>0.18.1</td>
+              <td>0.19.0</td>
               <td>TestEbookConvertGDriveKepubify</td>
             </tr>
           
@@ -3610,7 +3667,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>PyDrive2</th>
-              <td>1.7.0</td>
+              <td>1.8.1</td>
               <td>TestEbookConvertGDriveKepubify</td>
             </tr>
           
@@ -3622,7 +3679,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>comicapi</th>
-              <td>2.1.3</td>
+              <td>2.2.0</td>
               <td>TestEditAdditionalBooks</td>
             </tr>
           
@@ -3646,13 +3703,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>google-api-python-client</th>
-              <td>1.12.8</td>
+              <td>2.0.2</td>
               <td>TestEditBooksOnGdrive</td>
             </tr>
           
             <tr>
               <th>httplib2</th>
-              <td>0.18.1</td>
+              <td>0.19.0</td>
               <td>TestEditBooksOnGdrive</td>
             </tr>
           
@@ -3670,7 +3727,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>PyDrive2</th>
-              <td>1.7.0</td>
+              <td>1.8.1</td>
               <td>TestEditBooksOnGdrive</td>
             </tr>
           
@@ -3682,13 +3739,13 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>google-api-python-client</th>
-              <td>1.12.8</td>
+              <td>2.0.2</td>
               <td>TestSetupGdrive</td>
             </tr>
           
             <tr>
               <th>httplib2</th>
-              <td>0.18.1</td>
+              <td>0.19.0</td>
               <td>TestSetupGdrive</td>
             </tr>
           
@@ -3700,7 +3757,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>PyDrive2</th>
-              <td>1.7.0</td>
+              <td>1.8.1</td>
               <td>TestSetupGdrive</td>
             </tr>
           
@@ -3713,6 +3770,12 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
             <tr>
               <th>goodreads</th>
               <td>0.3.2</td>
+              <td>TestGoodreads</td>
+            </tr>
+          
+            <tr>
+              <th>python-Levenshtein</th>
+              <td>0.12.2</td>
               <td>TestGoodreads</td>
             </tr>
           
@@ -3742,7 +3805,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
           
             <tr>
               <th>Flask-Dance</th>
-              <td>3.2.0</td>
+              <td>3.3.1</td>
               <td>TestOAuthLogin</td>
             </tr>
           
@@ -3750,6 +3813,12 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
               <th>SQLAlchemy-Utils</th>
               <td>0.36.8</td>
               <td>TestOAuthLogin</td>
+            </tr>
+          
+            <tr>
+              <th>lxml</th>
+              <td>4.6.2</td>
+              <td>TestUploadPDF</td>
             </tr>
           
           </tbody>
@@ -3760,7 +3829,7 @@ AssertionError: 'series' unexpectedly found in {'reader': ['epub'], 'title': 'te
 </div>
 
 <script>
-    drawCircle(291, 1, 0, 7);
+    drawCircle(292, 1, 1, 7);
 </script>
 
 </div>

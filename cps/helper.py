@@ -32,7 +32,7 @@ from tempfile import gettempdir
 import requests
 from babel.dates import format_datetime
 from babel.units import format_unit
-from flask import send_from_directory, make_response, redirect, abort, url_for, request
+from flask import send_from_directory, make_response, redirect, abort, url_for
 from flask_babel import gettext as _
 from flask_login import current_user
 from sqlalchemy.sql.expression import true, false, and_, text
@@ -134,62 +134,50 @@ def send_registration_mail(e_mail, user_name, default_password, resend=False):
         taskMessage=_(u"Registration e-mail for user: %(name)s", name=user_name),
         text=txt
     ))
-
     return
+
+
+def check_send_to_kindle_with_converter(formats):
+    bookformats = list()
+    if 'EPUB' in formats and 'MOBI' not in formats:
+        bookformats.append({'format': 'Mobi',
+                            'convert': 1,
+                            'text': _('Convert %(orig)s to %(format)s and send to Kindle',
+                                      orig='Epub',
+                                      format='Mobi')})
+    if 'AZW3' in formats and not 'MOBI' in formats:
+        bookformats.append({'format': 'Mobi',
+                            'convert': 2,
+                            'text': _('Convert %(orig)s to %(format)s and send to Kindle',
+                                      orig='Azw3',
+                                      format='Mobi')})
+    return bookformats
 
 
 def check_send_to_kindle(entry):
     """
         returns all available book formats for sending to Kindle
     """
+    formats = list()
+    bookformats = list()
     if len(entry.data):
-        bookformats = list()
-        if not config.config_converterpath:
-            # no converter - only for mobi and pdf formats
-            for ele in iter(entry.data):
-                if ele.uncompressed_size < config.mail_size:
-                    if 'MOBI' in ele.format:
-                        bookformats.append({'format': 'Mobi',
-                                            'convert': 0,
-                                            'text': _('Send %(format)s to Kindle', format='Mobi')})
-                    if 'PDF' in ele.format:
-                        bookformats.append({'format': 'Pdf',
-                                            'convert': 0,
-                                            'text': _('Send %(format)s to Kindle', format='Pdf')})
-                    if 'AZW' in ele.format:
-                        bookformats.append({'format': 'Azw',
-                                            'convert': 0,
-                                            'text': _('Send %(format)s to Kindle', format='Azw')})
-        else:
-            formats = list()
-            for ele in iter(entry.data):
-                if ele.uncompressed_size < config.mail_size:
-                    formats.append(ele.format)
-            if 'MOBI' in formats:
-                bookformats.append({'format': 'Mobi',
-                                    'convert': 0,
-                                    'text': _('Send %(format)s to Kindle', format='Mobi')})
-            if 'AZW' in formats:
-                bookformats.append({'format': 'Azw',
-                                    'convert': 0,
-                                    'text': _('Send %(format)s to Kindle', format='Azw')})
-            if 'PDF' in formats:
-                bookformats.append({'format': 'Pdf',
-                                    'convert': 0,
-                                    'text': _('Send %(format)s to Kindle', format='Pdf')})
-            if config.config_converterpath:
-                if 'EPUB' in formats and 'MOBI' not in formats:
-                    bookformats.append({'format': 'Mobi',
-                                        'convert':1,
-                                        'text': _('Convert %(orig)s to %(format)s and send to Kindle',
-                                                  orig='Epub',
-                                                  format='Mobi')})
-                if 'AZW3' in formats and not 'MOBI' in formats:
-                    bookformats.append({'format': 'Mobi',
-                                        'convert': 2,
-                                        'text': _('Convert %(orig)s to %(format)s and send to Kindle',
-                                                  orig='Azw3',
-                                                  format='Mobi')})
+        for ele in iter(entry.data):
+            if ele.uncompressed_size < config.mail_size:
+                formats.append(ele.format)
+        if 'MOBI' in formats:
+            bookformats.append({'format': 'Mobi',
+                                'convert': 0,
+                                'text': _('Send %(format)s to Kindle', format='Mobi')})
+        if 'PDF' in formats:
+            bookformats.append({'format': 'Pdf',
+                                'convert': 0,
+                                'text': _('Send %(format)s to Kindle', format='Pdf')})
+        if 'AZW' in formats:
+            bookformats.append({'format': 'Azw',
+                                'convert': 0,
+                                'text': _('Send %(format)s to Kindle', format='Azw')})
+        if config.config_converterpath:
+            bookformats.extend(check_send_to_kindle_with_converter(formats))
         return bookformats
     else:
         log.error(u'Cannot find book entry %d', entry.id)
@@ -199,7 +187,7 @@ def check_send_to_kindle(entry):
 # Check if a reader is existing for any of the book formats, if not, return empty list, otherwise return
 # list with supported formats
 def check_read_formats(entry):
-    EXTENSIONS_READER = {'TXT', 'PDF', 'EPUB', 'CBZ', 'CBT', 'CBR'}
+    EXTENSIONS_READER = {'TXT', 'PDF', 'EPUB', 'CBZ', 'CBT', 'CBR', 'DJVU'}
     bookformats = list()
     if len(entry.data):
         for ele in iter(entry.data):
@@ -592,22 +580,29 @@ def save_cover_from_url(url, book_path):
 
 
 def save_cover_from_filestorage(filepath, saved_filename, img):
-    if hasattr(img,"metadata"):
-        img.save(filename=os.path.join(filepath, saved_filename))
-        img.close()
-    else:
-        # check if file path exists, otherwise create it, copy file to calibre path and delete temp file
-        if not os.path.exists(filepath):
-            try:
-                os.makedirs(filepath)
-            except OSError:
-                log.error(u"Failed to create path for cover")
-                return False, _(u"Failed to create path for cover")
+    # check if file path exists, otherwise create it, copy file to calibre path and delete temp file
+    if not os.path.exists(filepath):
         try:
-            img.save(os.path.join(filepath, saved_filename))
-        except (IOError, OSError):
-            log.error(u"Cover-file is not a valid image file, or could not be stored")
-            return False, _(u"Cover-file is not a valid image file, or could not be stored")
+            os.makedirs(filepath)
+        except OSError:
+            log.error(u"Failed to create path for cover")
+            return False, _(u"Failed to create path for cover")
+    try:
+        # upload of jgp file without wand
+        if isinstance(img, requests.Response):
+            with open(os.path.join(filepath, saved_filename), 'wb') as f:
+                f.write(img.content)
+        else:
+            if hasattr(img, "metadata"):
+                # upload of jpg/png... via url
+                img.save(filename=os.path.join(filepath, saved_filename))
+                img.close()
+            else:
+                # upload of jpg/png... from hdd
+                img.save(os.path.join(filepath, saved_filename))
+    except (IOError, OSError):
+        log.error(u"Cover-file is not a valid image file, or could not be stored")
+        return False, _(u"Cover-file is not a valid image file, or could not be stored")
     return True, None
 
 
@@ -735,7 +730,7 @@ def format_runtime(runtime):
 # helper function to apply localize status information in tasklist entries
 def render_task_status(tasklist):
     renderedtasklist = list()
-    for num, user, added, task in tasklist:
+    for __, user, __, task in tasklist:
         if user == current_user.nickname or current_user.role_admin():
             ret = {}
             if task.start_time:

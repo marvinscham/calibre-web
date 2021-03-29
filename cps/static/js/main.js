@@ -38,10 +38,10 @@ $(document).on("change", "input[type=\"checkbox\"][data-control]", function () {
 $(document).on("change", "select[data-control]", function() {
     var $this = $(this);
     var name = $this.data("control");
-    var showOrHide = parseInt($this.val());
+    var showOrHide = parseInt($this.val(), 10);
     // var showOrHideLast = $("#" + name + " option:last").val()
     for (var i = 0; i < $(this)[0].length; i++) {
-        var element = parseInt($(this)[0][i].value);
+        var element = parseInt($(this)[0][i].value, 10);
         if (element === showOrHide) {
             $("[data-related^=" + name + "][data-related*=-" + element + "]").show();
         } else {
@@ -55,7 +55,7 @@ $(document).on("change", "select[data-control]", function() {
 $(document).on("change", "select[data-controlall]", function() {
     var $this = $(this);
     var name = $this.data("controlall");
-    var showOrHide = parseInt($this.val());
+    var showOrHide = parseInt($this.val(), 10);
     if (showOrHide) {
         $("[data-related=" + name + "]").show();
     } else {
@@ -87,7 +87,7 @@ $(".container-fluid").bind('drop', function (e) {
         var files = e.originalEvent.dataTransfer.files;
         var test = $("#btn-upload")[0].accept;
         $(this).css('background', '');
-        const dt = new DataTransfer()
+        const dt = new DataTransfer();
         jQuery.each(files, function (index, item) {
             if (test.indexOf(item.name.substr(item.name.lastIndexOf('.'))) !== -1) {
                 dt.items.add(item);
@@ -114,7 +114,7 @@ $(document).ready(function() {
   }
 });
 
-function ConfirmDialog(id, dataValue, yesFn, noFn) {
+function confirmDialog(id, dataValue, yesFn, noFn) {
     var $confirm = $("#GeneralDeleteModal");
     // var dataValue= e.data('value'); // target.data('value');
     $confirm.modal('show');
@@ -316,6 +316,8 @@ $(function() {
         $loadMore.on( "append.infiniteScroll", function( event, response, path, data ) {
             if ($("body").hasClass("blur")) {
                 $(".pagination").addClass("hidden").html(() => $(response).find(".pagination").html());
+                $(" a:not(.dropdown-toggle) ")
+                  .removeAttr("data-toggle");
             }
             $(".load-more .row").isotope( "appended", $(data), null );
         });
@@ -481,7 +483,7 @@ $(function() {
         });
 
     $("#config_delete_kobo_token").click(function() {
-        ConfirmDialog(
+        confirmDialog(
             $(this).attr('id'),
             $(this).data('value'),
             function (value) {
@@ -509,7 +511,7 @@ $(function() {
     });
 
     $("#btndeluser").click(function() {
-        ConfirmDialog(
+        confirmDialog(
             $(this).attr('id'),
             $(this).data('value'),
             function(value){
@@ -527,7 +529,7 @@ $(function() {
     });
 
     $("#delete_shelf").click(function() {
-        ConfirmDialog(
+        confirmDialog(
             $(this).attr('id'),
             $(this).data('value'),
             function(value){
