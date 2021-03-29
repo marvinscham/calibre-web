@@ -36,7 +36,7 @@ from . import constants, logger, config, web_server
 
 
 log = logger.create()
-_REPOSITORY_API_URL = 'https://api.github.com/repos/janeczku/calibre-web'
+_REPOSITORY_API_URL = 'https://api.github.com/repos/marvinscham/calibre-web'
 
 
 def is_sha1(sha1):
