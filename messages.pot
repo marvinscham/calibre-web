@@ -46,7 +46,7 @@ msgid "Unknown command"
 msgstr ""
 
 #: cps/admin.py:172 cps/editbooks.py:662 cps/editbooks.py:674
-#: cps/editbooks.py:777 cps/editbooks.py:779 cps/editbooks.py:806
+#: cps/editbooks.py:0d254c cps/editbooks.py:779 cps/editbooks.py:806
 #: cps/editbooks.py:822 cps/updater.py:521 cps/uploader.py:94
 #: cps/uploader.py:104
 msgid "Unknown"
@@ -702,11 +702,11 @@ msgid "Show Downloaded Books"
 msgstr ""
 
 #: cps/render_template.py:50 cps/templates/index.xml:25 cps/web.py:425
-msgid "Top Rated Books"
+msgid "Most Popular Books"
 msgstr ""
 
 #: cps/render_template.py:52
-msgid "Show Top Rated Books"
+msgid "Show Most Popular Books"
 msgstr ""
 
 #: cps/render_template.py:53 cps/templates/index.xml:47

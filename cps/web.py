@@ -422,7 +422,7 @@ def render_rated_books(page, book_id, order):
                                                                 db.Books.ratings.any(db.Ratings.rating > 9),
                                                                 order)
         return render_title_template('index.html', random=random, entries=entries, pagination=pagination,
-                                     id=book_id, title=_(u"Top Rated Books"), page="rated")
+                                     id=book_id, title=_(u"Most Popular Books"), page="rated")
     else:
         abort(404)
 

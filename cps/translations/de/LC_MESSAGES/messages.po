@@ -703,12 +703,12 @@ msgid "Show Downloaded Books"
 msgstr "Zeige heruntergeladene Bücher"
 
 #: cps/render_template.py:50 cps/templates/index.xml:25 cps/web.py:425
-msgid "Top Rated Books"
-msgstr "Best bewertete Bücher"
+msgid "Most Popular Books"
+msgstr "Beliebteste Bücher"
 
 #: cps/render_template.py:52
-msgid "Show Top Rated Books"
-msgstr "Bestbewertete Bücher anzeigen"
+msgid "Show Most Popular Books"
+msgstr "Beliebteste Bücher anzeigen"
 
 #: cps/render_template.py:53 cps/templates/index.xml:47
 #: cps/templates/index.xml:51 cps/web.py:642

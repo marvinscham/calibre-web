@@ -702,11 +702,11 @@ msgid "Show Downloaded Books"
 msgstr "Mostra l'opzione per la visualizzazione dei libri scaricati"
 
 #: cps/render_template.py:50 cps/templates/index.xml:25 cps/web.py:425
-msgid "Top Rated Books"
+msgid "Most Popular Books"
 msgstr "Libri meglio valutati"
 
 #: cps/render_template.py:52
-msgid "Show Top Rated Books"
+msgid "Show Most Popular Books"
 msgstr "Mostra l'opzione per la selezione dei libri meglio valutati"
 
 #: cps/render_template.py:53 cps/templates/index.xml:47

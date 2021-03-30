@@ -703,11 +703,11 @@ msgid "Show Downloaded Books"
 msgstr ""
 
 #: cps/render_template.py:50 cps/templates/index.xml:25 cps/web.py:425
-msgid "Top Rated Books"
+msgid "Most Popular Books"
 msgstr "Bäst rankade böcker"
 
 #: cps/render_template.py:52
-msgid "Show Top Rated Books"
+msgid "Show Most Popular Books"
 msgstr "Visa böcker med bästa betyg"
 
 #: cps/render_template.py:53 cps/templates/index.xml:47

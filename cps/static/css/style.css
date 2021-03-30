@@ -30,6 +30,7 @@ html.http-error {
 
 body {
   background: #f2f2f2;
+  color: #0d254c;
   margin-bottom: 40px;
 }
 
@@ -48,7 +49,7 @@ body {
 
 body h2 {
   font-weight: normal;
-  color: #444;
+  color: #0d254c;
 }
 
 a,
@@ -56,32 +57,32 @@ a,
 .book-remove,
 .editable-empty,
 .editable-empty:hover {
-  color: #45b29d;
+  color: #c40233;
 }
 .user-remove:hover {
-  color: #23527c;
+  color: #c40233;
 }
 .btn-default a {
-  color: #444;
+  color: #061226;
 }
 .panel-title > a {
   text-decoration: none;
 }
 
 .navigation li a {
-  color: #444;
+  color: #0d254c;
   text-decoration: none;
   display: block;
   padding: 10px;
 }
 
 .btn-default a:hover {
-  color: #45b29d;
+  color: #c40233;
   text-decoration: None;
 }
 
 .btn-default:hover {
-  color: #45b29d;
+  color: #c40233;
 }
 
 .editable-click,
@@ -116,7 +117,7 @@ table .bg-dark-danger a {
 
 .navigation .create-shelf a {
   color: #fff;
-  background: #45b29d;
+  background: #c40233;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -125,6 +126,9 @@ table .bg-dark-danger a {
 .navigation li a:hover {
   background: rgba(153, 153, 153, 0.4);
   border-radius: 5px;
+}
+.navigation li.create-shelf a:hover {
+  background: #620119;
 }
 
 .navigation li a span {
@@ -205,9 +209,9 @@ table .bg-dark-danger a {
 .container-fluid .single .cover img {
   border: 1px solid #fff;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 5px 8px -6px #777;
-  -moz-box-shadow: 0 5px 8px -6px #777;
-  box-shadow: 0 5px 8px -6px #777;
+  -webkit-box-shadow: 0 5px 8px -6px #0d254c;
+  -moz-box-shadow: 0 5px 8px -6px #0d254c;
+  box-shadow: 0 5px 8px -6px #0d254c;
 }
 
 .container-fluid .book .cover span img {
@@ -217,9 +221,20 @@ table .bg-dark-danger a {
   height: 100%;
   border: 1px solid #fff;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 5px 8px -6px #777;
-  -moz-box-shadow: 0 5px 8px -6px #777;
-  box-shadow: 0 5px 8px -6px #777;
+  -webkit-box-shadow: 0 5px 8px -6px #0d254c;
+  -moz-box-shadow: 0 5px 8px -6px #0d254c;
+  box-shadow: 0 5px 8px -6px #0d254c;
+}
+
+.glyphicon-link:before {
+  color: #8692a6;
+  margin-right: 5px;
+}
+.glyphicon-tags:before {
+  color: #8692a6;
+}
+.container-fluid .book .meta .title:hover {
+  text-decoration: underline;
 }
 
 .container-fluid .book .meta {
@@ -235,31 +250,35 @@ table .bg-dark-danger a {
 .container-fluid .book .meta .title {
   font-weight: bold;
   font-size: 15px;
-  color: #444;
+  color: #0d254c;
 }
 
 .container-fluid .book .meta .series {
   font-weight: 400;
   font-size: 12px;
-  color: #444;
+  color: #061226;
 }
 
 .container-fluid .book .meta .author {
   font-size: 12px;
-  color: #999;
+  color: #8692a6;
 }
 
 .container-fluid .book .meta .rating {
   margin-top: 5px;
 }
 .rating .glyphicon-star-empty {
-  color: #444;
+  color: #0d254c;
 }
 .rating .glyphicon-star.good {
-  color: #444;
+  color: #0d254c;
 }
 .rating-clear .glyphicon-remove {
   color: #333;
+}
+
+.btn-default {
+  color: #0d254c;
 }
 
 .container-fluid .author .author-hidden,
@@ -270,7 +289,7 @@ table .bg-dark-danger a {
 .navbar-brand {
   font-family: "Grand Hotel", cursive;
   font-size: 35px;
-  color: #45b29d !important;
+  color: #c40233 !important;
 }
 
 .more-stuff {
@@ -362,7 +381,7 @@ span.glyphicon.glyphicon-tags {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  background-color: #1c5484;
+  background-color: #061226;
 }
 
 .btn-primary.disabled,
@@ -404,14 +423,14 @@ fieldset[disabled] .btn-primary.active {
 }
 
 table .bg-dark-danger {
-  background-color: #d9534f;
+  background-color: #c40233;
   color: #fff;
 }
 table .bg-dark-danger:hover {
-  background-color: #c9302c;
+  background-color: #620119;
 }
 table .bg-primary:hover {
-  background-color: #1c5484;
+  background-color: #0d254c;
 }
 .block-label {
   display: block;
@@ -429,9 +448,9 @@ input.pill {
 }
 
 input.pill + label {
-  border: 2px solid #45b29d;
+  border: 2px solid #c40233;
   border-radius: 15px;
-  color: #45b29d;
+  color: #c40233;
   cursor: pointer;
   display: inline-block;
   padding: 3px 15px;
@@ -441,7 +460,7 @@ input.pill + label {
 }
 
 input.pill:checked + label {
-  background-color: #45b29d;
+  background-color: #c40233;
   border-color: #fff;
   color: #fff;
 }

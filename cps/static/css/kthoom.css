@@ -1,5 +1,5 @@
 body {
-  background: #444;
+  background: #061226;
   overflow-x: hidden;
   overflow-y: auto;
   color: white;
@@ -44,7 +44,7 @@ body {
 
 #sidebar a.active,
 #sidebar a.active img + span {
-  background-color: #45b29d;
+  background-color: #c40233;
 }
 
 #sidebar li img {
@@ -100,7 +100,7 @@ body {
 
 #progress .bar-read {
   color: #fff;
-  background-color: #45b29d;
+  background-color: #c40233;
 }
 
 #progress .text {
