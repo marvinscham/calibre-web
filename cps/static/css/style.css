@@ -187,6 +187,21 @@ table .bg-dark-danger a {
   margin: 0 1em 1em 0;
 }
 
+.reflection {
+  background: url(images/reflection.svg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container-fluid .book .cover img.color_border {
+  transition: border 0.5s;
+  transition-timing-function: ease;
+  border-left: 9px solid #f2f2f2;
+}
+
 .container-fluid .single .cover img {
   border: 1px solid #fff;
   box-sizing: border-box;
