@@ -32,3 +32,4 @@ gdrive_credentials
 client_secrets.json
 
 .vscode/
+gmail.json

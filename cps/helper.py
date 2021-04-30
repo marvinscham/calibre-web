@@ -35,7 +35,7 @@ from babel.units import format_unit
 from flask import send_from_directory, make_response, redirect, abort, url_for
 from flask_babel import gettext as _
 from flask_login import current_user
-from sqlalchemy.sql.expression import true, false, and_, text
+from sqlalchemy.sql.expression import true, false, and_, text, func
 from werkzeug.datastructures import Headers
 from werkzeug.security import generate_password_hash
 
@@ -480,8 +480,8 @@ def reset_password(user_id):
         password = generate_random_password()
         existing_user.password = generate_password_hash(password)
         ub.session.commit()
-        send_registration_mail(existing_user.email, existing_user.nickname, password, True)
-        return 1, existing_user.nickname
+        send_registration_mail(existing_user.email, existing_user.name, password, True)
+        return 1, existing_user.name
     except Exception:
         ub.session.rollback()
         return 0, None
@@ -498,10 +498,36 @@ def generate_random_password():
 
 def uniq(inpt):
     output = []
+    inpt = [ " ".join(inp.split()) for inp in inpt]
     for x in inpt:
         if x not in output:
             output.append(x)
     return output
+
+def check_email(email):
+    email = valid_email(email)
+    if ub.session.query(ub.User).filter(func.lower(ub.User.email) == email.lower()).first():
+        log.error(u"Found an existing account for this e-mail address")
+        raise Exception(_(u"Found an existing account for this e-mail address"))
+    return email
+
+
+def check_username(username):
+    username = username.strip()
+    if ub.session.query(ub.User).filter(func.lower(ub.User.name) == username.lower()).scalar():
+        log.error(u"This username is already taken")
+        raise Exception (_(u"This username is already taken"))
+    return username
+
+
+def valid_email(email):
+    email = email.strip()
+    # Regex according to https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#validation
+    if not re.search(r"^[\w.!#$%&'*+\\/=?^_`{|}~-]+@[\w](?:[\w-]{0,61}[\w])?(?:\.[\w](?:[\w-]{0,61}[\w])?)*$",
+                     email):
+        log.error(u"Invalid e-mail address format")
+        raise Exception(_(u"Invalid e-mail address format"))
+    return email
 
 # ################################# External interface #################################
 
@@ -550,8 +576,8 @@ def get_book_cover_internal(book, use_generic_cover_on_failure):
                 else:
                     log.error('%s/cover.jpg not found on Google Drive', book.path)
                     return get_cover_on_failure(use_generic_cover_on_failure)
-            except Exception as e:
-                log.debug_or_exception(e)
+            except Exception as ex:
+                log.debug_or_exception(ex)
                 return get_cover_on_failure(use_generic_cover_on_failure)
         else:
             cover_file_path = os.path.join(config.config_calibre_dir, book.path)
@@ -667,6 +693,7 @@ def do_download_file(book, book_format, client, data, headers):
         # ToDo Check headers parameter
         for element in headers:
             response.headers[element[0]] = element[1]
+        log.info('Downloading file: {}'.format(os.path.join(filename, data.name + "." + book_format)))
         return response
 
 ##################################
@@ -706,7 +733,6 @@ def json_serial(obj):
             'seconds': obj.seconds,
             'microseconds': obj.microseconds,
         }
-        # return obj.isoformat()
     raise TypeError("Type %s not serializable" % type(obj))
 
 
@@ -731,7 +757,7 @@ def format_runtime(runtime):
 def render_task_status(tasklist):
     renderedtasklist = list()
     for __, user, __, task in tasklist:
-        if user == current_user.nickname or current_user.role_admin():
+        if user == current_user.name or current_user.role_admin():
             ret = {}
             if task.start_time:
                 ret['starttime'] = format_datetime(task.start_time, format='short', locale=get_locale())
@@ -769,8 +795,8 @@ def tags_filters():
 # checks if domain is in database (including wildcards)
 # example SELECT * FROM @TABLE WHERE  'abcdefg' LIKE Name;
 # from https://code.luasoftware.com/tutorials/flask/execute-raw-sql-in-flask-sqlalchemy/
+# in all calls the email address is checked for validity
 def check_valid_domain(domain_text):
-    # domain_text = domain_text.split('@', 1)[-1].lower()
     sql = "SELECT * FROM registration WHERE (:domain LIKE domain and allow = 1);"
     result = ub.session.query(ub.Registration).from_statement(text(sql)).params(domain=domain_text).all()
     if not len(result):
@@ -845,6 +871,7 @@ def get_download_link(book_id, book_format, client):
     if book:
         data1 = calibre_db.get_book_format(book.id, book_format.upper())
     else:
+        log.error("Book id {} not found for downloading".format(book_id))
         abort(404)
     if data1:
         # collect downloaded books only for registered user and not for anonymous user
