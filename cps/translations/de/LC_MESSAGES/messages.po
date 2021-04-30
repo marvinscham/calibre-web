@@ -1397,7 +1397,7 @@ msgstr "Sortiere nach Buchdatum, Neuestes zuerst"
 #: cps/templates/author.html:27 cps/templates/index.html:69
 #: cps/templates/search.html:30 cps/templates/shelf.html:17
 msgid "Sort according to book date, oldest first"
-msgstr "Sortiere nach Buchdatum, Aältestes zuerst"
+msgstr "Sortiere nach Buchdatum, Ältestes zuerst"
 
 #: cps/templates/author.html:28 cps/templates/index.html:70
 #: cps/templates/search.html:31 cps/templates/shelf.html:18

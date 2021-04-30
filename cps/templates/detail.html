@@ -98,6 +98,8 @@
         </div>
       </div>
       <h2 id="title">{{entry.title}}</h2>
+      <h3 class="subtitle">{{ get_cc("Nebentitel", cc, entry) }}</h3>
+      <hr>
       <p class="author">
           {% for author in entry.authors %}
             <a href="{{url_for('web.books_list',  data='author', sort_param='new', book_id=author.id ) }}">{{author.name.replace('|',',')}}</a>
@@ -129,6 +131,7 @@
        <div class="languages">
        <p>
       <span class="label label-default">{{_('Language')}}: {% for language in entry.languages %}{{language.language_name}}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+      <span class="label label-default lang-orig">Original: {{ get_cc("Sprache der Originalfassung", cc, entry) }}</span>
       </p>
       </div>
       {% endif %}
@@ -173,40 +176,10 @@
         <p>{{_('Published')}}: {{entry.pubdate|formatdate}} </p>
       </div>
       {% endif %}
-      {% if cc|length > 0 %}
-
-
-        {% for c in cc %}
-        <div class="real_custom_columns">
-          {% if entry['custom_column_' ~ c.id]|length > 0 %}
-            {{ c.name }}:
-            {% for column in entry['custom_column_' ~ c.id] %}
-              {% if c.datatype == 'rating' %}
-                {{ (column.value / 2)|formatfloat }}
-              {% else %}
-                {% if c.datatype == 'bool' %}
-                  {% if column.value == true %}
-                    <span class="glyphicon glyphicon-ok"></span>
-                  {% else %}
-                    <span class="glyphicon glyphicon-remove"></span>
-                  {% endif %}
-                {% else %}
-                {% if c.datatype == 'float' %}
-                  {{ column.value|formatfloat(2) }}
-                {% else %}
-                {% if c.datatype == 'series' %}
-                  {{ '%s [%s]' % (column.value, column.extra|formatfloat(2)) }}
-                {% else %}
-                  {{ column.value }}
-                {% endif %}
-                {% endif %}
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        </div>
-        {% endfor %}
-      {% endif %}
+      <div class="real-custom-columns">Seitenzahl: {{ get_cc("Seiten", cc, entry) }} (~ {{ get_cc("Lesedauer", cc, entry, "time") }})</div>
+      <div class="real-custom-columns" title="Flesch-Index">Leseschwierigkeit: {{ get_cc("Flesch-Grad", cc, entry, "flesch") }}</div>
+      <div class="real-custom-columns">Quelle: {{ get_cc("Quelle", cc, entry) }} ({{ get_cc("Anschaffungskosten", cc, entry, "currency") }})</div>
+      <div class="real-custom-columns">Neupreis: {{ get_cc("Neupreis", cc, entry, "currency") }}</div>
       {% if not g.user.is_anonymous %}
 
         <div class="custom_columns">

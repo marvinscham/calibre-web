@@ -109,6 +109,8 @@ class Identifiers(Base):
             return u"Amazon.{0}".format(format_type[7:])
         elif format_type == "isbn":
             return u"ISBN"
+        elif format_type == "isbn-10":
+            return u"ISBN-10"
         elif format_type == "doi":
             return u"DOI"
         elif format_type == "douban":
@@ -125,6 +127,14 @@ class Identifiers(Base):
             return u"ISSN"
         elif format_type == "isfdb":
             return u"ISFDB"
+        elif format_type == "mobi-asin":
+            return u"Amazon"
+        elif format_type == "url":
+            return u"URL"
+        elif format_type == "uri":
+            return u"URI"
+        elif format_type == "barnesnoble":
+            return u"Barnes & Noble"
         if format_type == "lubimyczytac":
             return u"Lubimyczytac"
         else:
@@ -137,6 +147,8 @@ class Identifiers(Base):
         elif format_type.startswith('amazon_'):
             return u"https://amazon.{0}/dp/{1}".format(format_type[7:], self.val)
         elif format_type == "isbn":
+            return u"https://www.worldcat.org/isbn/{0}".format(self.val)
+        elif format_type == "isbn-10":
             return u"https://www.worldcat.org/isbn/{0}".format(self.val)
         elif format_type == "doi":
             return u"https://dx.doi.org/{0}".format(self.val)
@@ -156,6 +168,14 @@ class Identifiers(Base):
             return u"https://portal.issn.org/resource/ISSN/{0}".format(self.val)
         elif format_type == "isfdb":
             return u"http://www.isfdb.org/cgi-bin/pl.cgi?{0}".format(self.val)
+        elif format_type == "mobi-asin":
+            return u"https://amazon.de/dp/{0}".format(self.val)
+        elif format_type == "barnesnoble":
+            return u"https://barnesandnoble.com/{0}".format(self.val)
+        elif format_type == "url":
+            return u"{0}".format(self.val)
+        elif format_type == "uri":
+            return u"{0}".format(self.val)
         else:
             return u"{0}".format(self.val)
 
@@ -350,6 +370,9 @@ class Books(Base):
         self.last_modified = last_modified
         self.path = path
         self.has_cover = (has_cover != None)
+
+    def __getitem__(self, key):
+        return getattr(self, key)
 
 
     def __repr__(self):

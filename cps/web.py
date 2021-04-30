@@ -51,7 +51,7 @@ from . import babel, db, ub, config, get_locale, app
 from . import calibre_db
 from .gdriveutils import getFileFromEbooksFolder, do_gdrive_download
 from .helper import check_valid_domain, render_task_status, \
-    get_cc_columns, get_book_cover, get_download_link, send_mail, generate_random_password, \
+    get_cc_columns, get_cc_column, get_book_cover, get_download_link, send_mail, generate_random_password, \
     send_registration_mail, check_send_to_kindle, check_read_formats, tags_filters, reset_password
 from .pagination import Pagination
 from .redirect import redirect_back
@@ -1699,7 +1699,8 @@ def show_book(book_id):
                                      is_archived=is_archived,
                                      kindle_list=kindle_list,
                                      reader_list=reader_list,
-                                     page="book")
+                                     page="book",
+                                     get_cc=get_cc_column)
     else:
         log.debug(u"Error opening eBook. File does not exist or file is not accessible")
         flash(_(u"Error opening eBook. File does not exist or file is not accessible"), category="error")

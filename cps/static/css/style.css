@@ -209,9 +209,9 @@ table .bg-dark-danger a {
 .container-fluid .single .cover img {
   border: 1px solid #fff;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 5px 8px -6px #0d254c;
-  -moz-box-shadow: 0 5px 8px -6px #0d254c;
-  box-shadow: 0 5px 8px -6px #0d254c;
+  -webkit-box-shadow: 0 5px 8px -6px #000;
+  -moz-box-shadow: 0 5px 8px -6px #000;
+  box-shadow: 0 5px 8px -6px #000;
 }
 
 .container-fluid .book .cover span img {
@@ -219,11 +219,30 @@ table .bg-dark-danger a {
   top: 0;
   left: 0;
   height: 100%;
-  border: 1px solid #fff;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 5px 8px -6px #0d254c;
-  -moz-box-shadow: 0 5px 8px -6px #0d254c;
-  box-shadow: 0 5px 8px -6px #0d254c;
+  -webkit-box-shadow: 0 5px 8px -6px #000;
+  -moz-box-shadow: 0 5px 8px -6px #000;
+  box-shadow: 0 5px 8px -6px #000;
+}
+
+h3.subtitle {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+span.glyphicon.glyphicon-star.good:before {
+  content: "🔥";
+}
+span.glyphicon.glyphicon-star-empty:before {
+  content: "🔥";
+  opacity: 0.2;
+}
+li > a > span.glyphicon.glyphicon-star-empty:before {
+  content: "\e007";
+  opacity: 1;
+}
+span.label.label-default.lang-orig {
+  text-decoration: underline;
 }
 
 .glyphicon-link:before {

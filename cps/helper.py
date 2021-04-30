@@ -797,6 +797,47 @@ def get_cc_columns(filter_config_custom_read=False):
 
     return cc
 
+def get_cc_column(key, arr, entry, datatype="string"):
+    if len(arr) > 0:
+        for a in arr:
+            if len(entry['custom_column_' + str(a.id)]) > 0:
+                for column in entry['custom_column_' + str(a.id)]:
+                    if a.name == key:
+                        if datatype == "time":
+                            value = round(float(column.value))
+                            if value == 0:
+                                return "<1 Stunde"
+                            elif value == 1:
+                                return "1 Stunde"
+                            else:
+                                return str(value) + " Stunden"
+                        elif datatype == "currency":
+                            return ('{:.2f}'.format(column.value) + " €")
+                        elif datatype == "int":
+                            return round(float(column.value))
+                        elif datatype == "flesch":
+                            value = round(float(column.value))
+                            if value <= 30:
+                                return str(value) + " (Schwer)"
+                            if value <= 50:
+                                return str(value) + " (Schwierig)"
+                            if value <= 60:
+                                return str(value) + " (Anspruchsvoll)"
+                            if value <= 70:
+                                return str(value) + " (Normal)"
+                            if value <= 80:
+                                return str(value) + " (Einfach)"
+                            if value <= 90:
+                                return str(value) + " (Leicht)"
+                            if value > 90:
+                                return str(value) + " (Sehr Leicht)"
+                            return str(value)
+                        else:
+                            return column.value
+    
+    if datatype == "string":
+        return ""
+    return "n/A"
 
 def get_download_link(book_id, book_format, client):
     book_format = book_format.split(".")[0]
