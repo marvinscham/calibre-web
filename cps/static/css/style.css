@@ -201,9 +201,7 @@ table .bg-dark-danger a {
   left: 0;
 }
 .container-fluid .book .cover img.color_border {
-  transition: border 0.5s;
-  transition-timing-function: ease;
-  border-left: 9px solid #f2f2f2;
+  border-left: 9px solid #000000;
 }
 
 .container-fluid .single .cover img {

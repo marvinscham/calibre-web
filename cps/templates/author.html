@@ -37,7 +37,7 @@
       <div class="cover">
         <a href="{{ url_for('web.show_book', book_id=entry.id) }}">
             <span class="img">
-              <img src="{{ url_for('web.get_cover', book_id=entry.id) }}" class="color_border" />
+              <img src="{{ url_for('web.get_cover', book_id=entry.id) }}" class="color_border" style="border-color: {{ entry['custom_column_51'][0].value }}" />
               {% if entry.id in read_book_ids %}<span class="badge read glyphicon glyphicon-ok"></span>{% endif %}
               <div class="reflection"></div>
             </span>
@@ -105,7 +105,7 @@
     <div class="col-sm-3 col-lg-2 col-xs-6 book">
       <div class="cover">
         <a href="https://www.goodreads.com/book/show/{{ entry.gid['#text'] }}" target="_blank" rel="noopener">
-          <img src="{{ entry.image_url }}" class="color_border" />
+          <img src="{{ entry.image_url }}" class="color_border" style="border-color: {{ entry['custom_column_51'][0].value }}" />
           <div class="reflection"></div>
         </a>
       </div>
@@ -151,6 +151,4 @@
   </a>
 </div>
 {% endif %}
-<script src="{{ url_for('static', filename='js/color-thief.js') }}"></script>
-<script src="{{ url_for('static', filename='js/color-thief-border.js') }}"></script>
 {% endblock %}

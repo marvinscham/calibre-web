@@ -713,6 +713,7 @@ def render_prepare_search_form(cc):
 
 def render_search_results(term, offset=None, order=None, limit=None):
     entries, result_count, pagination = calibre_db.get_search_results(term, offset, order, limit)
+    cc = get_cc_columns(filter_config_custom_read=True)
     return render_title_template('search.html',
                                  searchterm=term,
                                  pagination=pagination,
@@ -721,7 +722,9 @@ def render_search_results(term, offset=None, order=None, limit=None):
                                  entries=entries,
                                  result_count=result_count,
                                  title=_(u"Search"),
-                                 page="search")
+                                 page="search",
+                                 get_cc=get_cc_column,
+                                 cc=cc)
 
 
 # ################################### View Books list ##################################################################
@@ -1295,6 +1298,7 @@ def render_adv_search_results(term, offset=None, order=None, limit=None):
         # search custom culumns
         q = adv_search_custom_columns(cc, term, q)
 
+    cc = get_cc_columns(filter_config_custom_read=True)
     q = q.order_by(*order).all()
     flask_session['query'] = json.dumps(term)
     ub.store_ids(q)
@@ -1311,7 +1315,7 @@ def render_adv_search_results(term, offset=None, order=None, limit=None):
                                  pagination=pagination,
                                  entries=q[offset:limit_all],
                                  result_count=result_count,
-                                 title=_(u"Advanced Search"), page="advsearch")
+                                 title=_(u"Advanced Search"), page="advsearch", get_cc=get_cc_column, cc=cc)
 
 
 

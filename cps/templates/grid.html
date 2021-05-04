@@ -29,7 +29,7 @@
                   <div class="cover">
                       <a href="{{url_for('web.books_list', data=data, sort_param='new', book_id=entry[0].series[0].id )}}">
                           <span class="img">
-                              <img src="{{ url_for('web.get_cover', book_id=entry[0].id) }}" alt="{{ entry[0].name }}" class="color_border"/>
+                              <img src="{{ url_for('web.get_cover', book_id=entry[0].id) }}" alt="{{ entry[0].name }}" class="color_border" style="border-color: {{ entry[0]['custom_column_51'][0].value }}"/>
                               <span class="badge">{{entry.count}}</span>
                               <div class="reflection"></div>
                             </span>
@@ -49,6 +49,4 @@
 {% endblock %}
 {% block js %}
 <script src="{{ url_for('static', filename='js/filter_grid.js') }}"></script>
-<script src="{{ url_for('static', filename='js/color-thief.js') }}"></script>
-<script src="{{ url_for('static', filename='js/color-thief-border.js') }}"></script>
 {% endblock %}
