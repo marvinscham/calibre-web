@@ -26,13 +26,13 @@ The Calibre-Web documentation is hosted in the Github [Wiki](https://github.com/
 
 Do not open up a GitHub issue if the bug is a **security vulnerability** in Calibre-Web. Instead, please write an email to "ozzie.fernandez.isaacs@googlemail.com".
 
-Ensure the ***bug was not already reported** by searching on GitHub under [Issues](https://github.com/janeczku/calibre-web/issues). Please also check if a solution for your problem can be found in the [wiki](https://github.com/janeczku/calibre-web/wiki).
+Ensure the **\*bug was not already reported** by searching on GitHub under [Issues](https://github.com/marvinscham/calibre-web/issues). Please also check if a solution for your problem can be found in the [wiki](https://github.com/janeczku/calibre-web/wiki).
 
-If you're unable to find an **open issue** addressing the problem, open a [new one](https://github.com/janeczku/calibre-web/issues/new?assignees=&labels=&template=bug_report.md&title=). Be sure to include a **title** and **clear description**, as much relevant information as possible, the **issue form** helps you providing the right information. Deleting the form and just pasting the stack trace doesn't speed up fixing the problem. If your issue could be resolved, consider closing the issue.
+If you're unable to find an **open issue** addressing the problem, open a [new one](https://github.com/marvinscham/calibre-web/issues/new?assignees=&labels=&template=bug_report.md&title=). Be sure to include a **title** and **clear description**, as much relevant information as possible, the **issue form** helps you providing the right information. Deleting the form and just pasting the stack trace doesn't speed up fixing the problem. If your issue could be resolved, consider closing the issue.
 
 ### **Feature Request**
 
-If there is a feature missing in Calibre-Web and you can't find a feature request in the [Issues](https://github.com/janeczku/calibre-web/issues) section, you could create a [feature request](https://github.com/janeczku/calibre-web/issues/new?assignees=&labels=&template=feature_request.md&title=).
+If there is a feature missing in Calibre-Web and you can't find a feature request in the [Issues](https://github.com/marvinscham/calibre-web/issues) section, you could create a [feature request](https://github.com/janeczku/calibre-web/marvinscham/new?assignees=&labels=&template=feature_request.md&title=).
 We will not extend Calibre-Web with any more login abilities or add further files storages, or file syncing ability. Furthermore Calibre-Web is made for home usage for company in-house usage, so requests regarding any sorts of social interaction capability, payment routines, search engine or web site analytics integration will not be implemented.
 
 ### **Contributing code to Calibre-Web**
